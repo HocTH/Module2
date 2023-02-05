@@ -1,2 +1,4 @@
-package practive;public class Animal {
-}
+package animal;
+    public abstract class Animal{
+        public abstract String makeSound();
+    }
