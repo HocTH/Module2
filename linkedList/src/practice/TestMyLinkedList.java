@@ -3,13 +3,16 @@ package practice;
 public class TestMyLinkedList {
     public static void main(String[] args) {
         System.out.println("/=/=/=/= TESTING /=/=/=/=");
-        MyLinkedList ll = new MyLinkedList(10);
-        ll.addFirst(11);
-        ll.addFirst(12);
-        ll.addFirst(13);
+        MyLinkedList<Integer> integerMyLinkedList = new MyLinkedList<>();
+        integerMyLinkedList.addFirst(1);
+        integerMyLinkedList.add(1, 2);
+        integerMyLinkedList.add(2, 3);
+        integerMyLinkedList.add(3, 4);
+        integerMyLinkedList.addLast(5);
+        System.out.println("Display linked list: ");
+        for (int i = 0; i < integerMyLinkedList.numNodes; i++) {
+            System.out.println("Node " + (i + 1) + ": " + integerMyLinkedList.get(i));
+        }
 
-        ll.add(4,9);
-        ll.add(4,9);
-        ll.printList();
     }
 }
