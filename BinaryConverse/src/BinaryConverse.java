@@ -8,12 +8,12 @@ public class BinaryConverse {
             temp.add(num%2);
             num = num/2;
         }
-        temp.stream().forEach((p)->{
-            System.out.print(p);
-        });
+        while (!temp.isEmpty()) {
+            System.out.printf(" %s", temp.pop());
+        };
     }
 
     public static void main(String[] args) {
-        converse(3);
+        converse(35);
     }
 }
