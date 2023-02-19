@@ -1,47 +1,38 @@
 package bt2;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class WriteAndWriteCSV {
     public static void main(String[] args) {
-        BufferedReader br = null;
         try {
-            String line;
-            File file1 = new File("src/bt2/file3.csv");
-            br = new BufferedReader(new FileReader(file1));
+            File file = new File("src/bt2/file3.csv");
+
+            if (!file.exists()) {
+                throw new FileNotFoundException();
+            }
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line = "";
             while ((line = br.readLine()) != null) {
-                printCountry(parseCsvLine(line));
+                printCountry(parseCsv(line));
             }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (br != null)
-                    br.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            br.close();
+        } catch (Exception e) {
+            System.out.println("File không tồn tại!");
         }
     }
-
-    public static List<String> parseCsvLine(String csvLine) {
-        List<String> result = new ArrayList<>();
-        if (csvLine != null) {
-            String[] splitData = csvLine.split(",");
-            for (int i = 0; i < splitData.length; i++) {
-                result.add(splitData[i]);
+    public static List<String> parseCsv(String line){
+        List<String> strings = new ArrayList<>();
+        if (line!=null){
+            String[] splitArr = line.split(",");
+            for (int i = 0; i < splitArr.length ; i++) {
+                strings.add(splitArr[i]);
             }
         }
-        return result;
+        return strings;
     }
-
-    private static void printCountry(List<String> country) {
+    private static void printCountry(List<String> country){
         System.out.println(
                 "Country [id= "
                         + country.get(0)
@@ -49,5 +40,4 @@ public class WriteAndWriteCSV {
                         + " , name=" + country.get(2)
                         + "]");
     }
-
 }
