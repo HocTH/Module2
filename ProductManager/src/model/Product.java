@@ -63,7 +63,7 @@ public class Product implements Serializable {
         return "Product={" + "productCode=" + this.getProductCode() +
                 " ,nameProduct=" + this.getNameProduct() +
                 " ,Manufacturer=" + this.getManufacturer() +
-                " ,price" + this.getPrice() +
-                " ,description=" + getDescriptions();
+                " ,price=" + this.getPrice() +
+                " ,description=" + getDescriptions()+"}";
     }
 }

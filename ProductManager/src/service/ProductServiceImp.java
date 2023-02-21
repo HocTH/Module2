@@ -19,30 +19,32 @@ public class ProductServiceImp {
             while (true) {
                 boolean flag = false;
                 productCode = scanner.nextLine();
-                for (int i = 0; i < listProduct.size(); i++) {
-                    if (listProduct.get(i).getProductCode().equals(productCode)) {
+                for (Product product : listProduct) {
+                    if (product.getProductCode().equals(productCode)) {
                         flag = true;
                         break;
                     }
                 }
                 if (flag){
-                    System.out.println("Ma da trung lap");
+                    System.out.println("Code was existed");
+                    System.out.println("Input the code again");
                 }else {
                     break;
                 }
             }
         }
-        System.out.println("Nhap ten san pham");
+        System.out.println("Input name of product");
         String nameProduct= scanner.nextLine();
-        System.out.println("Nhap hang san xuat");
+        System.out.println("Input the manufacturer");
         String manufacturer= scanner.nextLine();
-        System.out.println("Nhap gia");
-        double price=scanner.nextDouble();
-        System.out.println("Nhap mo ta");
+        System.out.println("Input the description");
         String descriptions= scanner.nextLine();
+        System.out.println("Input the price");
+        double price=scanner.nextDouble();
         Product product = new Product(productCode,nameProduct,manufacturer,price,descriptions);
         listProduct.add(product);
         WriteAndReadProduct.writeObject(listProduct);
+        System.out.println("Add Successfully");
     }
     public void display(){
         System.out.println("Display list product");
@@ -54,36 +56,42 @@ public class ProductServiceImp {
     public void edit(){
         List<Product> listDisplay = WriteAndReadProduct.readFileObject();
         display();
+        boolean flag = false;
+
         if (listDisplay.size() == 0) {
-            System.out.println("List trong, them san pham vao");
+            System.out.println("List empty, add the product");
         } else {
             while (true) {
-                System.out.println("Nhap ma san pham");
+                System.out.println("Input the code of product");
+                int index = 0;
                 String productCodeCheck = scanner.nextLine();
                 for (int i = 0; i <listDisplay.size() ; i++) {
                     if (listDisplay.get(i).getProductCode().equals(productCodeCheck)){
-                        System.out.println("Nhap ten san pham");
-                        String nameProduct= scanner.nextLine();
-                        System.out.println("Nhap hang san xuat");
-                        String manufacturer= scanner.nextLine();
-                        System.out.println("Nhap gia");
-                        double price=scanner.nextDouble();
-                        System.out.println("Nhap mo ta");
-                        String descriptions= scanner.nextLine();
-                        listDisplay.get(i).setNameProduct(nameProduct);
-                        listDisplay.get(i).setManufacturer(manufacturer);
-                        listDisplay.get(i).setPrice(price);
-                        listDisplay.get(i).setDescriptions(descriptions);
+                        flag = true;
+                        index = i;
                         break;
                     }
                 }
-                WriteAndReadProduct.writeUpdatedObject(listDisplay);
+                if (flag){
+                    System.out.println("Input name of product");
+                    String nameProduct= scanner.nextLine();
+                    System.out.println("Input the manufacturer");
+                    String manufacturer= scanner.nextLine();
+                    System.out.println("Input the description");
+                    String descriptions= scanner.nextLine();
+                    System.out.println("Input the price");
+                    double price=scanner.nextDouble();
+                    listDisplay.get(index).setNameProduct(nameProduct);
+                    listDisplay.get(index).setManufacturer(manufacturer);
+                    listDisplay.get(index).setPrice(price);
+                    listDisplay.get(index).setDescriptions(descriptions);
+                    WriteAndReadProduct.writeUpdatedObject(listDisplay);
+                    break;
+                } else {
+                    System.out.println("Ma san pham khong ton tai");
+                    break;
+                }
             }
         }
     }
-
-//    public static void main(String[] args) {
-//        ProductServiceImp test = new ProductServiceImp();
-//        test.add();
-//    }
 }

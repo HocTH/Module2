@@ -2,11 +2,10 @@ package controllers;
 
 import service.ProductServiceImp;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ProductController {
-static final int ADD = 1;
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ProductServiceImp productServiceImp = new ProductServiceImp();
@@ -18,15 +17,21 @@ static final int ADD = 1;
             System.out.println("3. Edit product");
             System.out.println("0.Exit");
             try {
+                System.out.println("Input choice");
                 choice = scanner.nextInt();
                 switch (choice){
                     case 1 : productServiceImp.add();
+                    break;
                     case 2 : productServiceImp.display();
+                        break;
                     case 3 : productServiceImp.edit();
+                        break;
                     default: System.exit(0);
                 }
             }catch (NumberFormatException e){
-                System.out.println("So khong dung format.");
+                System.out.println("Number is not format.");
+            }catch (InputMismatchException e){
+                System.out.println("Number is not format.");
             }
         }
     }

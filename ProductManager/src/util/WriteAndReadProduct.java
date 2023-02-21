@@ -42,12 +42,4 @@ public class WriteAndReadProduct {
             e.printStackTrace();
         }
     }
-
-//    public static void main(String[] args) {
-//        Product product = new Product("123","13","Honda,",1000,"tinh");
-//        List list = new ArrayList<>();
-//        list.add(product);
-//        writeObject(list);
-//        readFileObject().forEach(System.out::println);
-//    }
 }
