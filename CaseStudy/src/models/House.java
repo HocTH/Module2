@@ -56,4 +56,10 @@ public class House extends Facility{
                 + getRentalType() + ", number of uses = " + getNumberOfUses()
                 + ", room standard = " + getRoomStandard() + ", number of floors = " + getNumberOfFloors();
     }
+    public String getInforToCSV(){
+        return  getId() + "," + getServiceName() + "," + getRentalCosts()
+                + "," + getUsableArea() + "," + getMaxPeople() + ","
+                + getRentalType() + "," + getNumberOfUses()
+                + "," + getRoomStandard() + "," + getNumberOfFloors();
+    }
 }

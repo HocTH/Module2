@@ -37,10 +37,10 @@ public class ProductServiceImp {
         String nameProduct= scanner.nextLine();
         System.out.println("Input the manufacturer");
         String manufacturer= scanner.nextLine();
-        System.out.println("Input the description");
-        String descriptions= scanner.nextLine();
         System.out.println("Input the price");
         double price=scanner.nextDouble();
+        System.out.println("Input the description");
+        String descriptions= scanner.nextLine();
         Product product = new Product(productCode,nameProduct,manufacturer,price,descriptions);
         listProduct.add(product);
         WriteAndReadProduct.writeObject(listProduct);
@@ -77,10 +77,10 @@ public class ProductServiceImp {
                     String nameProduct= scanner.nextLine();
                     System.out.println("Input the manufacturer");
                     String manufacturer= scanner.nextLine();
-                    System.out.println("Input the description");
-                    String descriptions= scanner.nextLine();
                     System.out.println("Input the price");
                     double price=scanner.nextDouble();
+                    System.out.println("Input the description");
+                    String descriptions= scanner.nextLine();
                     listDisplay.get(index).setNameProduct(nameProduct);
                     listDisplay.get(index).setManufacturer(manufacturer);
                     listDisplay.get(index).setPrice(price);

@@ -10,7 +10,6 @@ public class Booking {
 
     public Booking() {
     }
-
     public Booking(String bookingCode, String startDate, String endDate, String customerCode, String serviceName, String serviceType) {
         this.bookingCode = bookingCode;
         this.startDate = startDate;
@@ -71,12 +70,20 @@ public class Booking {
     @Override
     public String toString() {
         return "Booking{" +
-                "bookingCode=" + bookingCode +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", customerCode=" + customerCode +
-                ", serviceName=" + serviceName +
-                ", serviceType=" + serviceType +
+                "bookingCode=" + getBookingCode() +
+                ", startDate=" + getStartDate() +
+                ", endDate=" + getEndDate() +
+                ", customerCode=" + getCustomerCode() +
+                ", serviceName=" + getServiceName() +
+                ", serviceType=" + getServiceType() +
                 '}';
+    }
+    public String getInforToCSV(){
+        return getBookingCode() +
+                "," + getStartDate() +
+                "," + getEndDate() +
+                "," + getCustomerCode() +
+                "," + getServiceName() +
+                "," + getServiceType() ;
     }
 }

@@ -1,8 +1,14 @@
 package controllers;
 
+import service.*;
+
 import java.util.Scanner;
 
 public class FuramaController {
+    private static EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
+    private static CustomerServiceImpl customerService = new CustomerServiceImpl();
+    private static FacilityService facilityService = new FacilityServiceImpl();
+    private static BookingService bookingService = new BookingServiceImpl();
     public static void displayMainMenu() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -31,7 +37,7 @@ public class FuramaController {
                     manageCustomer();
                     break;
                 case 3:
-                    manageFaclity();
+                    manageFacility();
                     break;
                 case 4:
                     manageBooking();
@@ -63,6 +69,25 @@ public class FuramaController {
                 System.out.println("\nError: Could not parst option to number!\nTry agian...\n");
                 continue;
             }
+            switch (employeeOption) {
+                case 1:
+                    employeeService.showList();
+                    break;
+                case 2:
+                    employeeService.add();
+                    break;
+                case 3:
+                    employeeService.edit();
+                    break;
+                case 4:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Error: Your option do not match!\nTryr agian...\n");
+            }
+            if (employeeOption >= 1 && employeeOption <= 3) {
+                break;
+            }
         }
     }
 
@@ -78,29 +103,59 @@ public class FuramaController {
                 System.out.println("3.\tEdit customer");
                 System.out.println("4.\tReturn main menu");
                 customerOption = Integer.parseInt(scanner.nextLine());
+
             } catch (NumberFormatException err) {
                 System.out.println("\nError: Could not parst option to number!\nTry agian...\n");
                 continue;
             }
-
+            switch (customerOption) {
+                case 1:
+                    customerService.showList();
+                    break;
+                case 2:
+                    customerService.add();
+                    break;
+                case 3:
+                    customerService.edit();
+                    break;
+                case 4:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Error: Your option do not match!\nTryr agian...\n");
+            }
+            if (customerOption >= 1 && customerOption <= 3) {
+                break;
+            }
         }
     }
-
-    private static void manageFaclity() {
+    private static void manageFacility() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            int faclityOption = 0;
+            int facilityOption = 0;
 
             try {
-                System.out.println("\nDisplay Faclity Management menu:");
-                System.out.println("1\tDisplay list facilitys");
+                System.out.println("\nDisplay Facility Management menu:");
+                System.out.println("1\tDisplay list facility");
                 System.out.println("2\tAdd new facility");
                 System.out.println("3\tDisplay list facility maintenance");
                 System.out.println("4\tReturn main menu");
-                faclityOption = Integer.parseInt(scanner.nextLine());
+                facilityOption = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException err) {
                 System.out.println("\nError: Could not parst option to number!\nTry agian...\n");
                 continue;
+            }
+            switch (facilityOption) {
+                case 1: facilityService.showList(); break;
+                case 2: facilityService.add(); break;
+                case 3: facilityService.showListFacilityMaintenance() ; break;
+                case 4: return;
+                default:
+                    System.out.println("\nError: Your option do not match!\nTryr agian...\n");
+            }
+
+            if (facilityOption >= 1 && facilityOption <= 3) {
+                break;
             }
         }
     }
@@ -122,6 +177,19 @@ public class FuramaController {
             } catch (NumberFormatException err) {
                 System.out.println("\nError: Could not parst option to number!\nTry agian...\n");
                 continue;
+            }
+            switch (bookingOption) {
+                case 1: bookingService.add(); break;
+                case 2: bookingService.showList(); break;
+//                case 3: roomService.addNewRoom(); break;
+//                case 4: displayMainMenu(); break;
+                case 6: return;
+                default:
+                    System.out.println("Error: Your option do not match!\nTryr agian...\n");
+            }
+
+            if (bookingOption >= 1 && bookingOption <= 5) {
+                break;
             }
         }
     }

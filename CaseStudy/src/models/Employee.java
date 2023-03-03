@@ -65,10 +65,22 @@ public class Employee extends Person{
                 ", CMND=" + getIdentityCard() +
                 ", phoneNumber=" + getPhoneNumber()  +
                 ", email=" + getEmail() +
-                ", employeeCode=" + employeeCode +
-                ", qualification=" + qualification +
-                ", position=" + position +
-                ", salary='" + salary +
+                ", employeeCode=" + getEmployeeCode() +
+                ", qualification=" + getQualification() +
+                ", position=" + getPosition() +
+                ", salary='" + getSalary() +
                 '}';
+    }
+    public String getInforToCSV(){
+        return getName() +
+                "," + getBirthday() +
+                "," + isSex() +
+                "," + getIdentityCard() +
+                "," + getPhoneNumber()  +
+                "," + getEmail() +
+                "," + getEmployeeCode()+
+                "," + getQualification() +
+                "," + getPosition() +
+                "," + getSalary();
     }
 }

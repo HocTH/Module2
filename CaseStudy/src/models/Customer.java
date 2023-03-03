@@ -50,13 +50,24 @@ public class Customer extends Person{
         return "Customer{" +
                 "name=" + getName() +
                 ", birthday=" + getBirthday() +
-                ", sex=" + isSex() + '\'' +
+                ", sex=" + isSex() +
                 ", IdentityCard=" + getIdentityCard() +
                 ", phoneNumber=" + getPhoneNumber() +
                 ", email=" + getEmail()  +
-                ", customerCode=" + customerCode  +
-                ", customerType=" + customerType+
-                ", address=" + address +
+                ", customerCode=" + getCustomerCode()  +
+                ", customerType=" + getCustomerType()+
+                ", address=" + getAddress() +
                 '}';
+    }
+    public String getInforToCSV(){
+        return  getName() +
+                "," + getBirthday() +
+                "," + isSex() +
+                "," + getIdentityCard() +
+                "," + getPhoneNumber() +
+                "," + getEmail()  +
+                "," + getCustomerCode()  +
+                "," + getCustomerType()+
+                "," + getAddress() ;
     }
 }

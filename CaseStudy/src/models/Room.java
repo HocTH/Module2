@@ -43,4 +43,10 @@ public class Room extends Facility{
                 + ", usable area = " + getUsableArea() + ", maximum number of people = " + getMaxPeople() + ", rental type = "
                 + getRentalType() + ", number of uses = " + getNumberOfUses() + ", free service included = " + getFreeServiceIncluded();
     }
+    public String getInforToCSV(){
+         return
+                 getId() + "," + getServiceName() + "," + getRentalCosts()
+                         + "," + getUsableArea() + "," + getMaxPeople() + ","
+                         + getRentalType() + "," + getNumberOfUses() + ", " + getFreeServiceIncluded();
+    }
 }

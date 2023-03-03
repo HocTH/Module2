@@ -67,4 +67,10 @@ public class Villa extends Facility {
                 + getRentalType() + ", number of uses = " + getNumberOfUses() + ", room standard = " + getRoomStandard()
                 + ", pool area = " + getPoolArea() + ", number of floors = " + getNumberOfFloors();
     }
+    public String getInforToCSV(){
+        return  getId() + "," + getServiceName() + "," + getRentalCosts()
+                + "," + getUsableArea() + "," + getMaxPeople() + ","
+                + getRentalType() + "," + getNumberOfUses() + "," + getRoomStandard()
+                + "," + getPoolArea() + "," + getNumberOfFloors();
+    }
 }

@@ -61,11 +61,18 @@ public class Contract {
     @Override
     public String toString() {
         return "Contract{" +
-                "contractNumber=" + contractNumber +
-                ", bookingCode=" + bookingCode +
-                ", depositAmount=" + depositAmount +
-                ", totalPaymentAmount=" + totalPaymentAmount +
-                ", customerCode=" + customerCode +
+                "contractNumber=" + getContractNumber() +
+                ", bookingCode=" + getBookingCode() +
+                ", depositAmount=" + getDepositAmount() +
+                ", totalPaymentAmount=" + getTotalPaymentAmount() +
+                ", customerCode=" + getCustomerCode() +
                 '}';
+    }
+    public String getInforToCSV(){
+        return getContractNumber() +
+                "," + getBookingCode() +
+                "," + getDepositAmount() +
+                "," + getTotalPaymentAmount() +
+                "," + getCustomerCode();
     }
 }
