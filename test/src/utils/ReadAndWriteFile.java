@@ -1,5 +1,7 @@
 package utils;
 
+import models.PhoneUser;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,41 +39,24 @@ public class ReadAndWriteFile {
         }
         return list;
     }
-    public static void writeBankAccountToCSV(List<BankAccount> bankAccountList,boolean append){
+    public static void writePhoneToCSV(List<PhoneUser> phoneList, boolean append){
         List<String> strings = new ArrayList<>();
-        for (BankAccount bankAccount:bankAccountList) {
-            strings.add(bankAccount.getInformationToCSV());
+        for (PhoneUser phoneUser :phoneList) {
+            strings.add(phoneUser.getInformationToCSV());
         }
         writeListToCSV(strings, DATA_PATH,append);
     }
-    public static void writePaymentToCSV(List<PaymentAccount> paymentAccountList,boolean append){
-        List<String> strings = new ArrayList<>();
-        for (PaymentAccount paymentAccount:paymentAccountList) {
-            strings.add(paymentAccount.getInformationToCSV());
-        }
-        writeListToCSV(strings, DATA_PATH,append);
-    }
-    public static void writeSavingToCSV(List<SavingAccount> savingAccountList, boolean append){
-        List<String> strings = new ArrayList<>();
-        for (SavingAccount savingAccount:savingAccountList) {
-            strings.add(savingAccount.getInformationToCSV());
-        }
-        writeListToCSV(strings, DATA_PATH,append);
-    }
-    public static List<BankAccount> readBankAccountToCSV(){
+    public static List<PhoneUser> readPhoneToCSV(){
         List<String> list = readFileToCSV(DATA_PATH);
-        List<BankAccount> bankAccountList = new ArrayList<>();
+        List<PhoneUser> phoneList = new ArrayList<>();
         String[] arr = null;
         for (String element:list) {
             arr = element.split(DELIMITER);
-            if (arr.length==6){
-                PaymentAccount paymentAccount = new PaymentAccount(Integer.parseInt(arr[0]),arr[1],arr[2],arr[3],arr[4],Double.parseDouble(arr[5]));
-                bankAccountList.add(paymentAccount);
-            }else if (arr.length == 8) {
-                SavingAccount savingAccount = new SavingAccount(Integer.parseInt(arr[0]),arr[1],arr[2],arr[3],Double.parseDouble(arr[4]),arr[5],arr[6],Double.parseDouble(arr[7])) ;
-                bankAccountList.add(savingAccount);
+            if (arr.length==8){
+                PhoneUser phoneUser = new PhoneUser(Integer.parseInt(arr[0]),arr[1],arr[2],arr[3],arr[4],arr[5],arr[6],arr[7]);
+                phoneList.add(phoneUser);
             }
         }
-        return bankAccountList;
+        return phoneList;
     }
 }

@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Mail {
-    public static final String REGEX_EMAIL = "^[A-Za-z0-9]++[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
+    public static final String REGEX_EMAIL = ;
 
     public boolean validate(String regex) {
         Pattern pattern = Pattern.compile(REGEX_EMAIL);
